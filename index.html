@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>QC Checker</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<head>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  <h1>QC Checker</h1>
+  <div class="options">
+    <div class="button" id="button-add">+</div>
+    <div class="button" id="button-remove">-</div>
+    <div class="button" id="button-check">QC Check</div>
+  </div>
+  <div class="column-title">
+    <div class="column">Source text</div>
+    <div class="column">QC result</div>
+  </div>
+  <div class="check-form">
+    <textarea rows = "5" class="text-input"></textarea>
+    <div class="text-output"></div>
+  </div>
+  <script src="qc.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  font-size: 36px;
+  text-align: center;
+}
+
+.options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  background-color: #90c3e0;
+  padding: 25px;
+  margin: 25px;
+  width: 120px;
+  text-align: center;
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+.button:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.check-form, .column-title {
+  display: flex;
+  padding: 20px 40px 0;
+}
+
+.forbidden {
+  background-color: yellow;
+}
+
+.space {
+  background-color: gray;
+}
+
+.text-input, .text-ouput, .column {
+  width: 50%;
+  margin: 0 20px;
+}
+
+.text-input {
+  resize: vertical;
+}
+
+.column {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
