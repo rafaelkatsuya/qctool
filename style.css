@@ -13,7 +13,7 @@ h1 {
   justify-content: center;
 }
 
-.button {
+button {
   background-color: #90c3e0;
   padding: 25px;
   margin: 25px;
@@ -23,7 +23,7 @@ h1 {
   font-weight: bold;
 }
 
-.button:hover {
+button:hover {
   cursor: pointer;
   opacity: 0.5;
 }
