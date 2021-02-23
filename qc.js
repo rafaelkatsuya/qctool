@@ -29,9 +29,11 @@ $('#button-remove').on('click', function(evt) {
 
 $('#button-check').on('click', function(evt) {
   $('.check-form').each(function(){
-    let inputText = $(this).find('.text-input').val();
+    let inputText = $(this).find('.text-input').val().trim();
+    console.log(inputText)
+    console.log(inputText.length)
     if (inputText) {
-      let textOutput = $(this).find('.text-output')
+      let textOutput = $(this).find('.text-output');
       textOutput.html('Character count: ' + jaCharacterCount(inputText) + '<br>');
 
       for (var i = 0; i < inputText.length; i++) {
