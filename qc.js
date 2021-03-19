@@ -29,9 +29,12 @@ $('#button-remove').on('click', function(evt) {
 
 $('#button-check').on('click', function(evt) {
   $('.check-form').each(function(){
-    let inputText = $(this).find('.text-input').val().trim();
-    console.log(inputText)
-    console.log(inputText.length)
+    //Removes spaces and line feeds in source
+    let inputField = $(this).find('.text-input')
+    inputField.val(inputField.val().replace(/\s+/g, '').trim());
+
+    let inputText = inputField.val();
+
     if (inputText) {
       let textOutput = $(this).find('.text-output');
       textOutput.html('Character count: ' + jaCharacterCount(inputText) + '<br>');
@@ -49,3 +52,14 @@ $('#button-check').on('click', function(evt) {
   });
   return false;
 });
+
+function toClipboard(text) {
+        var container = $('#container');
+        var inp = document.createElement('textarea');
+        container.append(inp); 
+        inp.value = text;
+        inp.select();
+        document.execCommand('Copy');
+        container.remove(container.lastChild);
+        alert("Copied the text: " + inp.value);
+    }
