@@ -29,9 +29,9 @@ $('#button-remove').on('click', function(evt) {
 
 $('#button-check').on('click', function(evt) {
   $('.check-form').each(function(){
-    //Removes spaces and line feeds in source
+    //Removes line feeds in source
     let inputField = $(this).find('.text-input')
-    inputField.val(inputField.val().replace(/\s+/g, '').trim());
+    inputField.val(inputField.val().replace(/(\r\n|\n|\r)/gm, '').trim());
 
     let inputText = inputField.val();
 
