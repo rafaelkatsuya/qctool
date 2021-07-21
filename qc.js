@@ -15,7 +15,7 @@ function removeForm() {
 }
 
 function jaCharacterCount(string) {
-    let halfWidthCount = (string.match(/[a-zA-Z0-9]/g) || []).length / 2;
+    let halfWidthCount = (string.match(/[a-zA-Z0-9\u0020\!?]/g) || []).length / 2;
     return string.length - halfWidthCount;
 }
 
