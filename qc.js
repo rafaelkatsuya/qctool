@@ -1,8 +1,8 @@
 const forbiddenCharacters = ['！','？','：','（','）','　','･']
-const forbiddenWords = ['性同一性障害', 'クィア', 'ビアン', 'バイ', '男らしさ', '女らしさ', '禁断の', 'セクマイ', 'インターセックス',
-                        '半陰陽', '両性具有', 'FtM', 'MtF', 'ストレート', '二丁目', '男役', '夫役', '妻役', '女役', 'レズ',
-                        'ホモ', 'オカマ', 'カマ', 'オネエ', 'ニューハーフ', 'オナベ', 'おとこおんな', 'ノーマル', '性転換手術',
-                        'ノンケ']
+const potentiallyForbiddenWords = ['性同一性障害', 'クィア', 'ビアン', 'バイ', '男らしさ', '女らしさ', '禁断の', 'セクマイ',
+    'インターセックス', '半陰陽', '両性具有', 'FtM', 'MtF', 'ストレート', '二丁目', '男役', '夫役', '妻役', '女役']
+const forbiddenWords = ['レズ', 'ホモ', 'オカマ', 'カマ', 'オネエ', 'ニューハーフ', 'オナベ', 'おとこおんな', 'ノーマル',
+    '性転換手術', 'ノンケ']
 
 function addForm() {
   let newFormDiv = document.createElement('div');
@@ -38,19 +38,32 @@ $('#button-check').on('click', function(evt) {
     inputField.val(inputField.val().replace(/(\r\n|\n|\r)/gm, '').trim());
 
     let inputText = inputField.val();
+    let potentiallyForbiddenWordsFound = [];
     let forbiddenWordsFound = [];
 
     if (inputText) {
       let textOutput = $(this).find('.text-output');
-      textOutput.html('Character count: ' + jaCharacterCount(inputText) + '<br>');
+      textOutput.html('Character count: ' + jaCharacterCount(inputText) + '<br><br>');
 
-      forbiddenWords.forEach(word => {
-        if (inputText.includes(word)) {
-          forbiddenWordsFound.push(word)
-        }
+      potentiallyForbiddenWords.forEach(word => {
+          if (inputText.includes(word)) {
+              potentiallyForbiddenWordsFound.push(word)
+          }
       });
 
-      textOutput.html(textOutput.html() + '<span class="forbidden-word">' + 'Forbidden words used: ' + forbiddenWordsFound.join('・') + '</span><br>');
+      forbiddenWords.forEach(word => {
+          if (inputText.includes(word)) {
+              forbiddenWordsFound.push(word)
+          }
+      });
+
+      if (potentiallyForbiddenWordsFound.length + forbiddenWordsFound.length > 0) {
+        textOutput.html(textOutput.html() + '<span>Problematic words:</span><br>');
+        textOutput.html(textOutput.html() + '<span class="potentially-forbidden-word">'+ potentiallyForbiddenWordsFound.join('・') + '</span><br>');
+        textOutput.html(textOutput.html() + '<span class="forbidden-word">' + forbiddenWordsFound.join('・') + '</span><br><br>');
+      }
+
+      textOutput.html(textOutput.html() + '<span>Output text:</span><br>');
 
       for (var i = 0; i < inputText.length; i++) {
         if (forbiddenCharacters.includes(inputText[i])) {
@@ -60,10 +73,6 @@ $('#button-check').on('click', function(evt) {
         } else {
           textOutput.html(textOutput.html() + inputText[i]);
         }
-      }
-
-    if (forbiddenCharacters.includes()) {
-        textOutput.html(textOutput.html() + '<span class="forbidden-word">' + inputText[i]) + '</span>';
       }
     }
   });

@@ -37,6 +37,14 @@ button:hover {
   background-color: yellow;
 }
 
+.neutral-word {
+  color: green;
+}
+
+.potentially-forbidden-word {
+  color: darkorange;
+}
+
 .forbidden-word {
   color: red;
 }
